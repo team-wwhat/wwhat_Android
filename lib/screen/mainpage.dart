@@ -123,29 +123,37 @@ class _MainPageState extends State<MainPage> {
                     child: SizedBox(
                       width: 400,
                       height: 550,
-                      child: PageView.builder(
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int ind) {
-                          return ListView.builder(
-                            itemCount: 7,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                child: ListTile(
-                                  leading: Text(
-                                    ('${index + 1}'),
-                                    style: TextStyle(
-                                      fontSize: 20,
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: firestore.collection(collection).snapshots(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return CircularProgressIndicator();
+                          }
+                          return PageView.builder(
+                            itemCount: 5,
+                            itemBuilder: (BuildContext context, int ind) {
+                              return ListView.builder(
+                                itemCount: 7,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
+                                    child: ListTile(
+                                      leading: Text(
+                                        ('${index + 1}'),
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      title: Center(
+                                        child: Text(
+                                          snapshot.data!.docs[ind]['${index + 1}교시'].toString(),
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  title: Center(
-                                    child: Text(
-                                      '과목 이름',
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                  ),
-                                ),
+                                  );
+                                },
                               );
                             },
                           );
