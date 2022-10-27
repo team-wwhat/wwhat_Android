@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -8,12 +10,42 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  var firestore = FirebaseFirestore.instance;
+  var collection = '1학년 1반';
+  var daysOfWeek;
+  var now = DateTime.now();
+
+  String getSystemTime() {
+    return DateFormat("yy년 MM월 dd일").format(now);
+  }
+
+  String getWeek() {
+    String? getDay = Week[DateFormat('E').format(now)];
+    String dateStr = DateFormat(getDay! + '요일').format(now);
+    return dateStr;
+  }
+
+  var Week = {
+    'Sun': '일',
+    'Mon': '월',
+    'Tue': '화',
+    'Wed': '수',
+    'Thu': '목',
+    'Fri': '금',
+    'Sat': '토',
+  };
+
+  void initState() {
+    super.initState();
+    daysOfWeek = getWeek();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('X학년 X반 시간표'),
+          title: Text('1학년 1반 시간표'),
           centerTitle: true,
         ),
         body: Padding(
@@ -22,12 +54,25 @@ class _MainPageState extends State<MainPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    'X월 X일 X요일',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                  padding: const EdgeInsets.only(
+                    bottom: 20,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${getSystemTime()} ',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        daysOfWeek.toString(),
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Row(
@@ -78,25 +123,39 @@ class _MainPageState extends State<MainPage> {
                     child: SizedBox(
                       width: 400,
                       height: 550,
-                      child: ListView.builder(
-                        itemCount: 7,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: ListTile(
-                              leading: Text(
-                                ('${index + 1}'),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              title: Center(
-                                child: Text(
-                                  '과목 이름',
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                              ),
-                            ),
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: firestore.collection(collection).snapshots(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return CircularProgressIndicator();
+                          }
+                          return PageView.builder(
+                            itemCount: 5,
+                            itemBuilder: (BuildContext context, int ind) {
+                              return ListView.builder(
+                                itemCount: 7,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
+                                    child: ListTile(
+                                      leading: Text(
+                                        ('${index + 1}'),
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      title: Center(
+                                        child: Text(
+                                          snapshot.data!.docs[ind]['${index + 1}교시'].toString(),
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           );
                         },
                       ),
