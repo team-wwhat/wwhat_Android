@@ -13,6 +13,8 @@ class _MainPageState extends State<MainPage> {
   var firestore = FirebaseFirestore.instance;
   var collection = '1학년 1반';
   var daysOfWeek;
+  PageController page = PageController();
+  var daysOfWeekIndex;
   var now = DateTime.now();
 
   String getSystemTime() {
@@ -25,19 +27,32 @@ class _MainPageState extends State<MainPage> {
     return dateStr;
   }
 
+  int? getWeek1() {
+    int? getDay1 = Week1[DateFormat('E').format(now)];
+    return getDay1;
+  }
+
   var Week = {
-    'Sun': '일',
     'Mon': '월',
     'Tue': '화',
     'Wed': '수',
     'Thu': '목',
     'Fri': '금',
-    'Sat': '토',
+  };
+
+  var Week1 = {
+    'Mon': 0,
+    'Tue': 1,
+    'Wed': 2,
+    'Thu': 3,
+    'Fri': 4,
   };
 
   void initState() {
     super.initState();
     daysOfWeek = getWeek();
+    daysOfWeekIndex = getWeek1();
+    page = PageController(initialPage: daysOfWeekIndex);
   }
 
   @override
@@ -79,35 +94,55 @@ class _MainPageState extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      onPressed: null,
+                      onPressed: () {
+                        page.animateToPage(0,
+                            duration: Duration(milliseconds: 250),
+                            curve: Curves.linearToEaseOut);
+                      },
                       child: Text('월'),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: null,
+                      onPressed: () {
+                        page.animateToPage(1,
+                            duration: Duration(milliseconds: 250),
+                            curve: Curves.linearToEaseOut);
+                      },
                       child: Text('화'),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: null,
+                      onPressed: () {
+                        page.animateToPage(2,
+                            duration: Duration(milliseconds: 250),
+                            curve: Curves.linearToEaseOut);
+                      },
                       child: Text('수'),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: null,
+                      onPressed: () {
+                        page.animateToPage(3,
+                            duration: Duration(milliseconds: 250),
+                            curve: Curves.linearToEaseOut);
+                      },
                       child: Text('목'),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: null,
+                      onPressed: () {
+                        page.animateToPage(4,
+                            duration: Duration(milliseconds: 250),
+                            curve: Curves.linearToEaseOut);
+                      },
                       child: Text('금'),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
@@ -130,6 +165,7 @@ class _MainPageState extends State<MainPage> {
                             return CircularProgressIndicator();
                           }
                           return PageView.builder(
+                            controller: page,
                             itemCount: 5,
                             itemBuilder: (BuildContext context, int ind) {
                               return ListView.builder(
@@ -147,7 +183,9 @@ class _MainPageState extends State<MainPage> {
                                       ),
                                       title: Center(
                                         child: Text(
-                                          snapshot.data!.docs[ind]['${index + 1}교시'].toString(),
+                                          snapshot
+                                              .data!.docs[ind]['${index + 1}교시']
+                                              .toString(),
                                           style: TextStyle(fontSize: 20),
                                         ),
                                       ),
