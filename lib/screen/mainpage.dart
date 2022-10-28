@@ -52,6 +52,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
+    page = PageController(initialPage: daysOfWeekIndex);
   }
 
   @override
