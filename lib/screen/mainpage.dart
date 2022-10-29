@@ -38,6 +38,8 @@ class _MainPageState extends State<MainPage> {
     'Wed': '수',
     'Thu': '목',
     'Fri': '금',
+    'Sat' : '토',
+    'Sun' : '일',
   };
 
   var Week1 = {
@@ -46,6 +48,8 @@ class _MainPageState extends State<MainPage> {
     'Wed': 2,
     'Thu': 3,
     'Fri': 4,
+    'Sat' : 4,
+    'Sun' : 4,
   };
 
   void initState() {
