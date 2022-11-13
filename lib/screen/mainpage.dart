@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   var now = DateTime.now();
 
   String getSystemTime() {
-    return DateFormat("yy년 MM월 dd일").format(now);
+    return DateFormat("MM월 dd일").format(now);
   }
 
   String getWeek() {
@@ -68,6 +68,22 @@ class _MainPageState extends State<MainPage> {
           child: Container(
             child: Column(
               children: [
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          '시간표',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                        ),
+                        Text(getSystemTime()),
+                      ],
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.only(
                     bottom: 20,
