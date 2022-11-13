@@ -82,11 +82,17 @@ class _MainPageState extends State<MainPage> {
                         ),
                         Row(
                           children: [
-                            Text(getSystemTime()),
+                            Text(getSystemTime(),
+                            style: TextStyle(
+                              color: Color(0xff747474),
+                            ),),
                             SizedBox(
                               width: 3,
                             ),
-                            Text(daysOfWeek.toString()),
+                            Text(daysOfWeek.toString(),
+                            style: TextStyle(
+                              color: Color(0xff747474),
+                            ),),
                           ],
                         ),
                       ],
@@ -94,6 +100,7 @@ class _MainPageState extends State<MainPage> {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     OutlineCircleButton(
                       child: Center(
@@ -171,36 +178,43 @@ class _MainPageState extends State<MainPage> {
                           if (!snapshot.hasData) {
                             return CircularProgressIndicator();
                           }
-                          return PageView.builder(
-                            controller: page,
-                            itemCount: 5,
-                            itemBuilder: (BuildContext context, int ind) {
-                              return ListView.builder(
-                                itemCount: 7,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10, bottom: 10),
-                                    child: ListTile(
-                                      leading: Text(
-                                        ('${index + 1}'),
-                                        style: TextStyle(
-                                          fontSize: 20,
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: PageView.builder(
+                              controller: page,
+                              itemCount: 5,
+                              itemBuilder: (BuildContext context, int ind) {
+                                return ListView.builder(
+                                  itemCount: 7,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 10),
+                                      child: ListTile(
+                                        leading: Text(
+                                          ('${index + 1}'),
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        title: Center(
+                                          child: Text(
+                                            snapshot.data!
+                                                .docs[ind]['${index + 1}교시']
+                                                .toString(),
+                                            style: TextStyle(fontSize: 20),
+                                          ),
                                         ),
                                       ),
-                                      title: Center(
-                                        child: Text(
-                                          snapshot
-                                              .data!.docs[ind]['${index + 1}교시']
-                                              .toString(),
-                                          style: TextStyle(fontSize: 20),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           );
                         },
                       ),
