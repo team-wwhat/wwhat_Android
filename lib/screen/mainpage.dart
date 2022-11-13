@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:wwhat_android/Widget/OutlineCircleButton.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -92,79 +93,67 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        daysOfWeek.toString(),
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
+                    OutlineCircleButton(
+                      child: Center(
+                        child: Text('월'),
+                      ),
+                      radius: 33.0,
+                      borderSize: 0.5,
+                      onTap: () {
                         page.animateToPage(0,
                             duration: Duration(milliseconds: 250),
                             curve: Curves.linearToEaseOut);
                       },
-                      child: Text('월'),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    OutlineCircleButton(
+                      child: Center(
+                        child: Text('화'),
+                      ),
+                      radius: 33.0,
+                      borderSize: 0.5,
+                      onTap: () {
                         page.animateToPage(1,
                             duration: Duration(milliseconds: 250),
                             curve: Curves.linearToEaseOut);
                       },
-                      child: Text('화'),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    OutlineCircleButton(
+                      child: Center(
+                        child: Text('수'),
+                      ),
+                      radius: 33.0,
+                      borderSize: 0.5,
+                      onTap: () {
                         page.animateToPage(2,
                             duration: Duration(milliseconds: 250),
                             curve: Curves.linearToEaseOut);
                       },
-                      child: Text('수'),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    OutlineCircleButton(
+                      child: Center(
+                        child: Text('목'),
+                      ),
+                      radius: 33.0,
+                      borderSize: 0.5,
+                      onTap: () {
                         page.animateToPage(3,
                             duration: Duration(milliseconds: 250),
                             curve: Curves.linearToEaseOut);
                       },
-                      child: Text('목'),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    OutlineCircleButton(
+                      child: Center(
+                        child: Text('금'),
+                      ),
+                      radius: 33.0,
+                      borderSize: 0.5,
+                      onTap: () {
                         page.animateToPage(4,
                             duration: Duration(milliseconds: 250),
                             curve: Curves.linearToEaseOut);
                       },
-                      child: Text('금'),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                      ),
                     ),
                   ],
                 ),
