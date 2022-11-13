@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
 
   String getWeek() {
     String? getDay = Week[DateFormat('E').format(now)];
-    String dateStr = DateFormat(getDay! + '요일').format(now);
+    String dateStr = DateFormat(getDay!).format(now);
     return dateStr;
   }
 
@@ -79,7 +79,15 @@ class _MainPageState extends State<MainPage> {
                             fontSize: 30,
                           ),
                         ),
-                        Text(getSystemTime()),
+                        Row(
+                          children: [
+                            Text(getSystemTime()),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text(daysOfWeek.toString()),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -91,12 +99,6 @@ class _MainPageState extends State<MainPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        '${getSystemTime()} ',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
                       Text(
                         daysOfWeek.toString(),
                         style: TextStyle(
