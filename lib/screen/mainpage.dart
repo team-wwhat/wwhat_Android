@@ -229,7 +229,7 @@ class _MainPageState extends State<MainPage> {
                           }
                           return Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Color(0xffF0F0F0),
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: PageView.builder(
