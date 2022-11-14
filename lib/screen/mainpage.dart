@@ -106,7 +106,7 @@ class _MainPageState extends State<MainPage> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
+                  padding: const EdgeInsets.only(top: 23.0, bottom: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -114,7 +114,7 @@ class _MainPageState extends State<MainPage> {
                         child: const Center(
                           child: Text('월'),
                         ),
-                        radius: 33.0,
+                        radius: 30.0,
                         borderSize: 0.5,
                         onTap: () {
                           page.animateToPage(0,
@@ -126,7 +126,7 @@ class _MainPageState extends State<MainPage> {
                         child: const Center(
                           child: Text('화'),
                         ),
-                        radius: 33.0,
+                        radius: 30.0,
                         borderSize: 0.5,
                         onTap: () {
                           page.animateToPage(1,
@@ -138,7 +138,7 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('수'),
                         ),
-                        radius: 33.0,
+                        radius: 30.0,
                         borderSize: 0.5,
                         onTap: () {
                           page.animateToPage(2,
@@ -150,7 +150,7 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('목'),
                         ),
-                        radius: 33.0,
+                        radius: 30.0,
                         borderSize: 0.5,
                         onTap: () {
                           page.animateToPage(3,
@@ -162,13 +162,16 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('금'),
                         ),
-                        radius: 33.0,
+                        radius: 30.0,
                         borderSize: 0.5,
                         onTap: () {
                           page.animateToPage(4,
                               duration: Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
+                      ),
+                      SizedBox(
+                        width: 21.0,
                       ),
                     ],
                   ),
@@ -211,8 +214,8 @@ class _MainPageState extends State<MainPage> {
                                         ),
                                       ),
                                       title: Text(
-                                        snapshot.data!
-                                            .docs[ind]['${index + 1}교시']
+                                        snapshot
+                                            .data!.docs[ind]['${index + 1}교시']
                                             .toString(),
                                         style: TextStyle(fontSize: 16),
                                       ),
