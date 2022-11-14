@@ -127,6 +127,9 @@ class _MainPageState extends State<MainPage> {
                               curve: Curves.linearToEaseOut);
                         },
                       ),
+                      SizedBox(
+                        width: 5,
+                      ),
                       OutlineCircleButton(
                         child: const Center(
                           child: Text(
@@ -143,6 +146,9 @@ class _MainPageState extends State<MainPage> {
                               duration: Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
+                      ),
+                      SizedBox(
+                        width: 5,
                       ),
                       OutlineCircleButton(
                         child: Center(
@@ -161,6 +167,9 @@ class _MainPageState extends State<MainPage> {
                               curve: Curves.linearToEaseOut);
                         },
                       ),
+                      SizedBox(
+                        width: 5,
+                      ),
                       OutlineCircleButton(
                         child: Center(
                           child: Text(
@@ -177,6 +186,9 @@ class _MainPageState extends State<MainPage> {
                               duration: Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
+                      ),
+                      SizedBox(
+                        width: 5,
                       ),
                       OutlineCircleButton(
                         child: Center(
@@ -229,7 +241,7 @@ class _MainPageState extends State<MainPage> {
                                   itemBuilder: (context, index) {
                                     return ListTile(
                                       leading: Padding(
-                                        padding: const EdgeInsets.only(top: 3),
+                                        padding: const EdgeInsets.only(top: 3.25),
                                         child: Text(
                                           ('${index + 1}'),
                                           style: TextStyle(
