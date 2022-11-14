@@ -112,7 +112,12 @@ class _MainPageState extends State<MainPage> {
                     children: [
                       OutlineCircleButton(
                         child: const Center(
-                          child: Text('월'),
+                          child: Text(
+                            '월',
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         radius: 30.0,
                         borderSize: 0.5,
@@ -124,7 +129,12 @@ class _MainPageState extends State<MainPage> {
                       ),
                       OutlineCircleButton(
                         child: const Center(
-                          child: Text('화'),
+                          child: Text(
+                            '화',
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         radius: 30.0,
                         borderSize: 0.5,
@@ -136,7 +146,12 @@ class _MainPageState extends State<MainPage> {
                       ),
                       OutlineCircleButton(
                         child: Center(
-                          child: Text('수'),
+                          child: Text(
+                            '수',
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         radius: 30.0,
                         borderSize: 0.5,
@@ -148,7 +163,12 @@ class _MainPageState extends State<MainPage> {
                       ),
                       OutlineCircleButton(
                         child: Center(
-                          child: Text('목'),
+                          child: Text(
+                            '목',
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         radius: 30.0,
                         borderSize: 0.5,
@@ -160,7 +180,12 @@ class _MainPageState extends State<MainPage> {
                       ),
                       OutlineCircleButton(
                         child: Center(
-                          child: Text('금'),
+                          child: Text(
+                            '금',
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         radius: 30.0,
                         borderSize: 0.5,
