@@ -73,7 +73,7 @@ class _MainPageState extends State<MainPage> {
                   children: [
                     Column(
                       children: [
-                        Text(
+                        const Text(
                           '시간표',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -82,96 +82,105 @@ class _MainPageState extends State<MainPage> {
                         ),
                         Row(
                           children: [
-                            Text(getSystemTime(),
-                            style: TextStyle(
-                              color: Color(0xff747474),
-                            ),),
+                            Text(
+                              getSystemTime(),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff747474),
+                              ),
+                            ),
                             SizedBox(
                               width: 3,
                             ),
-                            Text(daysOfWeek.toString(),
-                            style: TextStyle(
-                              color: Color(0xff747474),
-                            ),),
+                            Text(
+                              daysOfWeek.toString(),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff747474),
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    OutlineCircleButton(
-                      child: Center(
-                        child: Text('월'),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      OutlineCircleButton(
+                        child: const Center(
+                          child: Text('월'),
+                        ),
+                        radius: 33.0,
+                        borderSize: 0.5,
+                        onTap: () {
+                          page.animateToPage(0,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
-                      radius: 33.0,
-                      borderSize: 0.5,
-                      onTap: () {
-                        page.animateToPage(0,
-                            duration: Duration(milliseconds: 250),
-                            curve: Curves.linearToEaseOut);
-                      },
-                    ),
-                    OutlineCircleButton(
-                      child: Center(
-                        child: Text('화'),
+                      OutlineCircleButton(
+                        child: const Center(
+                          child: Text('화'),
+                        ),
+                        radius: 33.0,
+                        borderSize: 0.5,
+                        onTap: () {
+                          page.animateToPage(1,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
-                      radius: 33.0,
-                      borderSize: 0.5,
-                      onTap: () {
-                        page.animateToPage(1,
-                            duration: Duration(milliseconds: 250),
-                            curve: Curves.linearToEaseOut);
-                      },
-                    ),
-                    OutlineCircleButton(
-                      child: Center(
-                        child: Text('수'),
+                      OutlineCircleButton(
+                        child: Center(
+                          child: Text('수'),
+                        ),
+                        radius: 33.0,
+                        borderSize: 0.5,
+                        onTap: () {
+                          page.animateToPage(2,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
-                      radius: 33.0,
-                      borderSize: 0.5,
-                      onTap: () {
-                        page.animateToPage(2,
-                            duration: Duration(milliseconds: 250),
-                            curve: Curves.linearToEaseOut);
-                      },
-                    ),
-                    OutlineCircleButton(
-                      child: Center(
-                        child: Text('목'),
+                      OutlineCircleButton(
+                        child: Center(
+                          child: Text('목'),
+                        ),
+                        radius: 33.0,
+                        borderSize: 0.5,
+                        onTap: () {
+                          page.animateToPage(3,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
-                      radius: 33.0,
-                      borderSize: 0.5,
-                      onTap: () {
-                        page.animateToPage(3,
-                            duration: Duration(milliseconds: 250),
-                            curve: Curves.linearToEaseOut);
-                      },
-                    ),
-                    OutlineCircleButton(
-                      child: Center(
-                        child: Text('금'),
+                      OutlineCircleButton(
+                        child: Center(
+                          child: Text('금'),
+                        ),
+                        radius: 33.0,
+                        borderSize: 0.5,
+                        onTap: () {
+                          page.animateToPage(4,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
-                      radius: 33.0,
-                      borderSize: 0.5,
-                      onTap: () {
-                        page.animateToPage(4,
-                            duration: Duration(milliseconds: 250),
-                            curve: Curves.linearToEaseOut);
-                      },
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 21.0, right: 21.0),
                   child: ScrollConfiguration(
                     behavior:
                         const ScrollBehavior().copyWith(overscroll: false),
                     child: SizedBox(
-                      width: 400,
-                      height: 550,
+                      width: 348,
+                      height: 401,
                       child: StreamBuilder<QuerySnapshot>(
                         stream: firestore.collection(collection).snapshots(),
                         builder: (context, snapshot) {
@@ -190,25 +199,22 @@ class _MainPageState extends State<MainPage> {
                                 return ListView.builder(
                                   itemCount: 7,
                                   itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 10, bottom: 10),
-                                      child: ListTile(
-                                        leading: Text(
+                                    return ListTile(
+                                      leading: Padding(
+                                        padding: const EdgeInsets.only(top: 3),
+                                        child: Text(
                                           ('${index + 1}'),
                                           style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        title: Center(
-                                          child: Text(
-                                            snapshot.data!
-                                                .docs[ind]['${index + 1}교시']
-                                                .toString(),
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                        ),
+                                      ),
+                                      title: Text(
+                                        snapshot.data!
+                                            .docs[ind]['${index + 1}교시']
+                                            .toString(),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                     );
                                   },
