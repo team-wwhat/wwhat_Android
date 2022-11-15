@@ -235,8 +235,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 ScrollConfiguration(
-                  behavior:
-                      const ScrollBehavior().copyWith(overscroll: false),
+                  behavior: const ScrollBehavior().copyWith(overscroll: false),
                   child: SizedBox(
                     width: 348,
                     height: 401,
@@ -260,8 +259,7 @@ class _MainPageState extends State<MainPage> {
                                 itemBuilder: (context, index) {
                                   return ListTile(
                                     leading: Padding(
-                                      padding:
-                                          const EdgeInsets.only(top: 3.5),
+                                      padding: const EdgeInsets.only(top: 3.5),
                                       child: Text(
                                         ('${index + 1}'),
                                         style: TextStyle(
@@ -271,8 +269,7 @@ class _MainPageState extends State<MainPage> {
                                       ),
                                     ),
                                     title: Text(
-                                      snapshot
-                                          .data!.docs[ind]['${index + 1}교시']
+                                      snapshot.data!.docs[ind]['${index + 1}교시']
                                           .toString(),
                                       style: TextStyle(fontSize: 16),
                                     ),
