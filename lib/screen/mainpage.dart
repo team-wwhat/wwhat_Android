@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:wwhat_android/Widget/OutlineCircleButton.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -65,23 +64,14 @@ class _MainPageState extends State<MainPage> {
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
     page = PageController(initialPage: daysOfWeekIndex);
-    switch (daysOfWeekIndex) {
-      case 0:
-        isButton = [true, false, false, false, false];
-        break;
-      case 1:
-        isButton = [false, true, false, false, false];
-        break;
-      case 2:
-        isButton = [false, false, true, false, false];
-        break;
-      case 3:
-        isButton = [false, false, false, true, false];
-        break;
-      case 4:
-        isButton = [false, false, false, false, true];
-    }
   }
+
+  List<String> selectedCategory = List.empty(growable: true);
+  String category0 = '월';
+  String category1 = '화';
+  String category2 = '수';
+  String category3 = '목';
+  String category4 = '금';
 
   @override
   Widget build(BuildContext context) {
@@ -157,65 +147,197 @@ class _MainPageState extends State<MainPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      ToggleButtons(
-                        children: [
-                          OutlineCircleButton(
-                            radius: 35.0,
-                            borderSize: 0.5,
-                            child: const Center(
-                              child: const Text('월'),
-                            ),
-                          ),
-                          OutlineCircleButton(
-                            radius: 35.0,
-                            borderSize: 0.5,
-                            child: const Center(
-                              child: const Text('화'),
-                            ),
-                          ),
-                          OutlineCircleButton(
-                            radius: 35.0,
-                            borderSize: 0.5,
-                            child: const Center(
-                              child: const Text('수'),
-                            ),
-                          ),
-                          OutlineCircleButton(
-                            radius: 35.0,
-                            borderSize: 0.5,
-                            child: const Center(
-                              child: const Text('목'),
-                            ),
-                          ),
-                          OutlineCircleButton(
-                            radius: 35.0,
-                            borderSize: 0.5,
-                            child: const Center(
-                              child: const Text('금'),
-                            ),
-                          ),
-                        ],
-                        isSelected: isButton,
-                        selectedColor: Color(0xffE44545),
-                        focusColor: Color(0xffE44545),
-                        fillColor: Color(0xffE44545),
-                        onPressed: (int index) {
-                          setState(() {
-                            for (int buttonIndex = 0;
-                                buttonIndex < isButton.length;
-                                buttonIndex++) {
-                              if (buttonIndex == index) {
-                                isButton[buttonIndex] = true;
-                              } else {
-                                isButton[buttonIndex] = false;
-                              }
-                            }
-                          });
-                          page.animateToPage(index,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
+                      InkWell(
+                        onTap: () {
+                          selectedCategory.add(category0);
+                          selectedCategory.add(category1);
+                          selectedCategory.add(category2);
+                          selectedCategory.add(category3);
+                          selectedCategory.add(category4);
+                          setState(() {});
                         },
-                        renderBorder: false,
+                        child: InkWell(
+                          onTap: () {
+                            selectedCategory = List.empty(growable: true);
+                            selectedCategory.add(category0);
+                            setState(() {
+                              page.animateToPage(0,
+                                  duration: Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            });
+                          },
+                          child: Container(
+                            width: 30.0,
+                            height: 30.0,
+                            decoration: BoxDecoration(
+                              color: selectedCategory.contains(category0)
+                                  ? Color(0xffE44545)
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(30.0),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '월',
+                                style: TextStyle(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: selectedCategory.contains(category0)
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category1);
+                          setState(() {
+                            page.animateToPage(1,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category1)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '화',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category1)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category2);
+                          setState(() {
+                            page.animateToPage(2,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category2)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '수',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category2)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category3);
+                          setState(() {
+                            page.animateToPage(3,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category3)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '목',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category3)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category4);
+                          setState(() {
+                            page.animateToPage(4,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category4)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '금',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category4)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
