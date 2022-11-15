@@ -97,131 +97,88 @@ class _MainPageState extends State<MainPage> {
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.only(left: 21, top: 69, right: 21),
-            child: Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 11, bottom: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 38,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 11, bottom: 10),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 38,
+                        height: 2,
+                        color: const Color(0xffE44545),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2),
+                        child: Container(
+                          width: 8,
                           height: 2,
                           color: const Color(0xffE44545),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 2),
-                          child: Container(
-                            width: 8,
-                            height: 2,
-                            color: const Color(0xffE44545),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          const Text(
-                            '시간표',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  getSystemTime(),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    color: const Color(0xff747474),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                daysOfWeek.toString(),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff747474),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 23.0, bottom: 16.0, right: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                ),
+                Row(
+                  children: [
+                    Column(
                       children: [
-                        InkWell(
+                        const Text(
+                          '시간표',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                getSystemTime(),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: const Color(0xff747474),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            Text(
+                              daysOfWeek.toString(),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff747474),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 23.0, bottom: 16.0, right: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          selectedCategory.add(category0);
+                          selectedCategory.add(category1);
+                          selectedCategory.add(category2);
+                          selectedCategory.add(category3);
+                          selectedCategory.add(category4);
+                          setState(() {});
+                        },
+                        child: InkWell(
                           onTap: () {
+                            selectedCategory = List.empty(growable: true);
                             selectedCategory.add(category0);
-                            selectedCategory.add(category1);
-                            selectedCategory.add(category2);
-                            selectedCategory.add(category3);
-                            selectedCategory.add(category4);
-                            setState(() {});
-                          },
-                          child: InkWell(
-                            onTap: () {
-                              selectedCategory = List.empty(growable: true);
-                              selectedCategory.add(category0);
-                              setState(() {
-                                page.animateToPage(0,
-                                    duration: Duration(milliseconds: 250),
-                                    curve: Curves.linearToEaseOut);
-                              });
-                            },
-                            child: Container(
-                              width: 30.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: selectedCategory.contains(category0)
-                                    ? Color(0xffE44545)
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(30.0),
-                                border: Border.all(
-                                    color: Colors.black,
-                                    width: selectedCategory.contains(category0)
-                                        ? 0
-                                        : 1),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '월',
-                                  style: TextStyle(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: selectedCategory.contains(category0)
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            selectedCategory = List.empty(growable: true);
-                            selectedCategory.add(category1);
                             setState(() {
-                              page.animateToPage(1,
+                              page.animateToPage(0,
                                   duration: Duration(milliseconds: 250),
                                   curve: Curves.linearToEaseOut);
                             });
@@ -230,146 +187,23 @@ class _MainPageState extends State<MainPage> {
                             width: 30.0,
                             height: 30.0,
                             decoration: BoxDecoration(
-                              color: selectedCategory.contains(category1)
-                                  ? Color(0xffE44545)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(
-                                  color: Colors.black,
-                                  width: selectedCategory.contains(category1)
-                                      ? 0
-                                      : 1),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '화',
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: selectedCategory.contains(category1)
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            selectedCategory = List.empty(growable: true);
-                            selectedCategory.add(category2);
-                            setState(() {
-                              page.animateToPage(2,
-                                  duration: Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            });
-                          },
-                          child: Container(
-                            width: 30.0,
-                            height: 30.0,
-                            decoration: BoxDecoration(
-                              color: selectedCategory.contains(category2)
-                                  ? Color(0xffE44545)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(
-                                  color: Colors.black,
-                                  width: selectedCategory.contains(category2)
-                                      ? 0
-                                      : 1),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '수',
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: selectedCategory.contains(category2)
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            selectedCategory = List.empty(growable: true);
-                            selectedCategory.add(category3);
-                            setState(() {
-                              page.animateToPage(3,
-                                  duration: Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            });
-                          },
-                          child: Container(
-                            width: 30.0,
-                            height: 30.0,
-                            decoration: BoxDecoration(
-                              color: selectedCategory.contains(category3)
-                                  ? Color(0xffE44545)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(
-                                  color: Colors.black,
-                                  width: selectedCategory.contains(category3)
-                                      ? 0
-                                      : 1),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '목',
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: selectedCategory.contains(category3)
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            selectedCategory = List.empty(growable: true);
-                            selectedCategory.add(category4);
-                            setState(() {
-                              page.animateToPage(4,
-                                  duration: Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            });
-                          },
-                          child: Container(
-                            width: 30.0,
-                            height: 30.0,
-                            decoration: BoxDecoration(
-                              color: selectedCategory.contains(category4)
+                              color: selectedCategory.contains(category0)
                                   ? Color(0xffE44545)
                                   : Colors.white,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
                                   color: Color(0xffF0F0F0),
-                                  width: selectedCategory.contains(category4)
+                                  width: selectedCategory.contains(category0)
                                       ? 0
                                       : 1),
                             ),
                             child: Center(
                               child: Text(
-                                '금',
+                                '월',
                                 style: TextStyle(
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w500,
-                                  color: selectedCategory.contains(category4)
+                                  color: selectedCategory.contains(category0)
                                       ? Colors.white
                                       : Colors.black,
                                 ),
@@ -377,62 +211,226 @@ class _MainPageState extends State<MainPage> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  ScrollConfiguration(
-                    behavior: const ScrollBehavior().copyWith(overscroll: false),
-                    child: SizedBox(
-                      width: 348,
-                      height: 401,
-                      child: StreamBuilder<QuerySnapshot>(
-                        stream: firestore.collection(collection).snapshots(),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return const Center(
-                              child: const CircularProgressIndicator(),
-                            );
-                          }
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xffF0F0F0),
-                              borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category1);
+                          setState(() {
+                            page.animateToPage(1,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category1)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                                color: Color(0xffF0F0F0),
+                                width: selectedCategory.contains(category1)
+                                    ? 0
+                                    : 1),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '화',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category1)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                             ),
-                            child: PageView.builder(
-                              controller: page,
-                              itemCount: 5,
-                              itemBuilder: (BuildContext context, int ind) {
-                                return ListView.builder(
-                                  itemCount: 7,
-                                  itemBuilder: (context, index) {
-                                    return ListTile(
-                                      leading: Padding(
-                                        padding: const EdgeInsets.only(top: 3.5),
-                                        child: Text(
-                                          ('${index + 1}'),
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category2);
+                          setState(() {
+                            page.animateToPage(2,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category2)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                                color: Color(0xffF0F0F0),
+                                width: selectedCategory.contains(category2)
+                                    ? 0
+                                    : 1),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '수',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category2)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category3);
+                          setState(() {
+                            page.animateToPage(3,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category3)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                                color: Color(0xffF0F0F0),
+                                width: selectedCategory.contains(category3)
+                                    ? 0
+                                    : 1),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '목',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category3)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          selectedCategory = List.empty(growable: true);
+                          selectedCategory.add(category4);
+                          setState(() {
+                            page.animateToPage(4,
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.linearToEaseOut);
+                          });
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: selectedCategory.contains(category4)
+                                ? Color(0xffE44545)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                                color: Color(0xffF0F0F0),
+                                width: selectedCategory.contains(category4)
+                                    ? 0
+                                    : 1),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '금',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: selectedCategory.contains(category4)
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ScrollConfiguration(
+                  behavior: const ScrollBehavior().copyWith(overscroll: false),
+                  child: SizedBox(
+                    width: 348,
+                    height: 401,
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: firestore.collection(collection).snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: const CircularProgressIndicator(),
+                          );
+                        }
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xffF0F0F0),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: PageView.builder(
+                            controller: page,
+                            itemCount: 5,
+                            itemBuilder: (BuildContext context, int ind) {
+                              return ListView.builder(
+                                itemCount: 7,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    leading: Padding(
+                                      padding: const EdgeInsets.only(top: 3.5),
+                                      child: Text(
+                                        ('${index + 1}'),
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      title: Text(
-                                        snapshot.data!.docs[ind]['${index + 1}교시']
-                                            .toString(),
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          );
-                        },
-                      ),
+                                    ),
+                                    title: Text(
+                                      snapshot.data!.docs[ind]['${index + 1}교시']
+                                          .toString(),
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
