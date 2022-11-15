@@ -65,7 +65,7 @@ class _MainPageState extends State<MainPage> {
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
     page = PageController(initialPage: daysOfWeekIndex);
-    switch (daysOfWeekIndex){
+    switch (daysOfWeekIndex) {
       case 0:
         isButton = [true, false, false, false, false];
         break;
@@ -165,11 +165,6 @@ class _MainPageState extends State<MainPage> {
                             child: const Center(
                               child: const Text('월'),
                             ),
-                            onTap: () {
-                              page.animateToPage(0,
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            },
                           ),
                           OutlineCircleButton(
                             radius: 35.0,
@@ -177,11 +172,6 @@ class _MainPageState extends State<MainPage> {
                             child: const Center(
                               child: const Text('화'),
                             ),
-                            onTap: () {
-                              page.animateToPage(1,
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            },
                           ),
                           OutlineCircleButton(
                             radius: 35.0,
@@ -189,11 +179,6 @@ class _MainPageState extends State<MainPage> {
                             child: const Center(
                               child: const Text('수'),
                             ),
-                            onTap: () {
-                              page.animateToPage(2,
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            },
                           ),
                           OutlineCircleButton(
                             radius: 35.0,
@@ -201,11 +186,6 @@ class _MainPageState extends State<MainPage> {
                             child: const Center(
                               child: const Text('목'),
                             ),
-                            onTap: () {
-                              page.animateToPage(3,
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            },
                           ),
                           OutlineCircleButton(
                             radius: 35.0,
@@ -213,20 +193,17 @@ class _MainPageState extends State<MainPage> {
                             child: const Center(
                               child: const Text('금'),
                             ),
-                            onTap: () {
-                              page.animateToPage(4,
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.linearToEaseOut);
-                            },
                           ),
                         ],
                         isSelected: isButton,
                         selectedColor: Color(0xffE44545),
                         focusColor: Color(0xffE44545),
                         fillColor: Color(0xffE44545),
-                        onPressed: (int index){
+                        onPressed: (int index) {
                           setState(() {
-                            for (int buttonIndex = 0; buttonIndex < isButton.length; buttonIndex++) {
+                            for (int buttonIndex = 0;
+                                buttonIndex < isButton.length;
+                                buttonIndex++) {
                               if (buttonIndex == index) {
                                 isButton[buttonIndex] = true;
                               } else {
@@ -234,6 +211,9 @@ class _MainPageState extends State<MainPage> {
                               }
                             }
                           });
+                          page.animateToPage(index,
+                              duration: const Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
                         },
                         renderBorder: false,
                       ),
