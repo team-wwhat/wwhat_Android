@@ -23,19 +23,19 @@ class _MainPageState extends State<MainPage> {
   }
 
   String getWeek() {
-    String? getDay = Week[DateFormat('E').format(now)];
+    String? getDay = week[DateFormat('E').format(now)];
     String dateStr = DateFormat(getDay!).format(now);
     return dateStr;
   }
 
   int? getWeek1() {
-    int? getDay1 = Week1[DateFormat('E').format(now)];
+    int? getDay1 = week1[DateFormat('E').format(now)];
     return getDay1;
   }
 
   List<bool> _selections = List.generate(5, (index) => false);
 
-  var Week = {
+  var week = {
     'Mon': '월',
     'Tue': '화',
     'Wed': '수',
@@ -45,7 +45,7 @@ class _MainPageState extends State<MainPage> {
     'Sun': '일',
   };
 
-  var Week1 = {
+  var week1 = {
     'Mon': 0,
     'Tue': 1,
     'Wed': 2,
@@ -78,14 +78,14 @@ class _MainPageState extends State<MainPage> {
                       Container(
                         width: 38,
                         height: 2,
-                        color: Color(0xffE44545),
+                        color: const Color(0xffE44545),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 2),
                         child: Container(
                           width: 8,
                           height: 2,
-                          color: Color(0xffE44545),
+                          color: const Color(0xffE44545),
                         ),
                       ),
                     ],
@@ -108,18 +108,18 @@ class _MainPageState extends State<MainPage> {
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 getSystemTime(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
-                                  color: Color(0xff747474),
+                                  color: const Color(0xff747474),
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 3,
                             ),
                             Text(
                               daysOfWeek.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 color: Color(0xff747474),
                               ),
@@ -138,60 +138,60 @@ class _MainPageState extends State<MainPage> {
                       OutlineCircleButton(
                         radius: 30.0,
                         borderSize: 0.5,
-                        child: Center(
-                          child: Text('월'),
+                        child: const Center(
+                          child: const Text('월'),
                         ),
                         onTap: () {
                           page.animateToPage(0,
-                              duration: Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
                         borderSize: 0.5,
-                        child: Center(
-                          child: Text('화'),
+                        child: const Center(
+                          child: const Text('화'),
                         ),
                         onTap: () {
                           page.animateToPage(1,
-                              duration: Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
                         borderSize: 0.5,
-                        child: Center(
-                          child: Text('수'),
+                        child: const Center(
+                          child: const Text('수'),
                         ),
                         onTap: () {
                           page.animateToPage(2,
-                              duration: Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
                         borderSize: 0.5,
-                        child: Center(
-                          child: Text('목'),
+                        child: const Center(
+                          child: const Text('목'),
                         ),
                         onTap: () {
                           page.animateToPage(3,
-                              duration: Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
                         borderSize: 0.5,
-                        child: Center(
-                          child: Text('금'),
+                        child: const Center(
+                          child: const Text('금'),
                         ),
                         onTap: () {
                           page.animateToPage(4,
-                              duration: Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 250),
                               curve: Curves.linearToEaseOut);
                         },
                       ),
@@ -209,11 +209,11 @@ class _MainPageState extends State<MainPage> {
                       stream: firestore.collection(collection).snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         }
                         return Container(
                           decoration: BoxDecoration(
-                            color: Color(0xffF0F0F0),
+                            color: const Color(0xffF0F0F0),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: PageView.builder(
@@ -228,7 +228,7 @@ class _MainPageState extends State<MainPage> {
                                       padding: const EdgeInsets.only(top: 3.5),
                                       child: Text(
                                         ('${index + 1}'),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -237,7 +237,7 @@ class _MainPageState extends State<MainPage> {
                                     title: Text(
                                       snapshot.data!.docs[ind]['${index + 1}교시']
                                           .toString(),
-                                      style: TextStyle(fontSize: 16),
+                                      style: const TextStyle(fontSize: 16),
                                     ),
                                   );
                                 },
