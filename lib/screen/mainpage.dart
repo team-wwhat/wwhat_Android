@@ -33,6 +33,8 @@ class _MainPageState extends State<MainPage> {
     return getDay1;
   }
 
+  List<bool> _selections = List.generate(5, (index) => false);
+
   var Week = {
     'Mon': '월',
     'Tue': '화',
