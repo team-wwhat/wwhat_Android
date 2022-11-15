@@ -141,6 +141,11 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('월'),
                         ),
+                        onTap: () {
+                          page.animateToPage(0,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
@@ -148,6 +153,11 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('화'),
                         ),
+                        onTap: () {
+                          page.animateToPage(1,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
@@ -155,6 +165,11 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('수'),
                         ),
+                        onTap: () {
+                          page.animateToPage(2,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
@@ -162,6 +177,11 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('목'),
                         ),
+                        onTap: () {
+                          page.animateToPage(3,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
                       OutlineCircleButton(
                         radius: 30.0,
@@ -169,6 +189,11 @@ class _MainPageState extends State<MainPage> {
                         child: Center(
                           child: Text('금'),
                         ),
+                        onTap: () {
+                          page.animateToPage(4,
+                              duration: Duration(milliseconds: 250),
+                              curve: Curves.linearToEaseOut);
+                        },
                       ),
                     ],
                     isSelected: _selections,
