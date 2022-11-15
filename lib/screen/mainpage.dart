@@ -133,107 +133,45 @@ class _MainPageState extends State<MainPage> {
                 Padding(
                   padding: const EdgeInsets.only(
                       top: 23.0, bottom: 16.0, right: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  child: ToggleButtons(
                     children: [
                       OutlineCircleButton(
-                        child: const Center(
-                          child: Text(
-                            '월',
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
                         radius: 30.0,
                         borderSize: 0.5,
-                        onTap: () {
-                          page.animateToPage(0,
-                              duration: Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      OutlineCircleButton(
-                        child: const Center(
-                          child: Text(
-                            '화',
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        onTap: () {
-                          page.animateToPage(1,
-                              duration: Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      OutlineCircleButton(
                         child: Center(
-                          child: Text(
-                            '수',
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
+                          child: Text('월'),
                         ),
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        onTap: () {
-                          page.animateToPage(2,
-                              duration: Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      SizedBox(
-                        width: 5,
                       ),
                       OutlineCircleButton(
-                        child: Center(
-                          child: Text(
-                            '목',
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
                         radius: 30.0,
                         borderSize: 0.5,
-                        onTap: () {
-                          page.animateToPage(3,
-                              duration: Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      SizedBox(
-                        width: 5,
+                        child: Center(
+                          child: Text('화'),
+                        ),
                       ),
                       OutlineCircleButton(
-                        child: Center(
-                          child: Text(
-                            '금',
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
                         radius: 30.0,
                         borderSize: 0.5,
-                        onTap: () {
-                          page.animateToPage(4,
-                              duration: Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
+                        child: Center(
+                          child: Text('수'),
+                        ),
+                      ),
+                      OutlineCircleButton(
+                        radius: 30.0,
+                        borderSize: 0.5,
+                        child: Center(
+                          child: Text('목'),
+                        ),
+                      ),
+                      OutlineCircleButton(
+                        radius: 30.0,
+                        borderSize: 0.5,
+                        child: Center(
+                          child: Text('금'),
+                        ),
                       ),
                     ],
+                    isSelected: _selections,
                   ),
                 ),
                 ScrollConfiguration(
