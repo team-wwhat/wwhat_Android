@@ -172,6 +172,7 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ],
                     isSelected: _selections,
+                    renderBorder: false,
                   ),
                 ),
                 ScrollConfiguration(
