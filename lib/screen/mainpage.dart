@@ -64,6 +64,22 @@ class _MainPageState extends State<MainPage> {
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
     page = PageController(initialPage: daysOfWeekIndex);
+    switch (daysOfWeekIndex){
+      case 0:
+        selectedCategory.add(category0);
+        break;
+      case 1:
+        selectedCategory.add(category1);
+        break;
+      case 2:
+        selectedCategory.add(category2);
+        break;
+      case 3:
+        selectedCategory.add(category3);
+        break;
+      case 4:
+        selectedCategory.add(category4);
+    }
   }
 
   List<String> selectedCategory = List.empty(growable: true);
