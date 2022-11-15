@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
     page = PageController(initialPage: daysOfWeekIndex);
-    switch (daysOfWeekIndex){
+    switch (daysOfWeekIndex) {
       case 0:
         selectedCategory.add(category0);
         break;
@@ -367,7 +367,9 @@ class _MainPageState extends State<MainPage> {
                       stream: firestore.collection(collection).snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return const CircularProgressIndicator();
+                          return const Center(
+                            child: const CircularProgressIndicator(),
+                          );
                         }
                         return Container(
                           decoration: BoxDecoration(
