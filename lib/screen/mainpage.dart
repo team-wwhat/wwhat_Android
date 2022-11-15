@@ -190,7 +190,11 @@ class _MainPageState extends State<MainPage> {
                                   ? Color(0xffE44545)
                                   : Colors.white,
                               borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(color: Colors.black),
+                              border: Border.all(
+                                  color: Colors.black,
+                                  width: selectedCategory.contains(category0)
+                                      ? 0
+                                      : 1),
                             ),
                             child: Center(
                               child: Text(
@@ -228,7 +232,11 @@ class _MainPageState extends State<MainPage> {
                                 ? Color(0xffE44545)
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(
+                                color: Colors.black,
+                                width: selectedCategory.contains(category1)
+                                    ? 0
+                                    : 1),
                           ),
                           child: Center(
                             child: Text(
@@ -265,7 +273,11 @@ class _MainPageState extends State<MainPage> {
                                 ? Color(0xffE44545)
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(
+                                color: Colors.black,
+                                width: selectedCategory.contains(category2)
+                                    ? 0
+                                    : 1),
                           ),
                           child: Center(
                             child: Text(
@@ -302,7 +314,11 @@ class _MainPageState extends State<MainPage> {
                                 ? Color(0xffE44545)
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(
+                                color: Colors.black,
+                                width: selectedCategory.contains(category3)
+                                    ? 0
+                                    : 1),
                           ),
                           child: Center(
                             child: Text(
@@ -339,7 +355,11 @@ class _MainPageState extends State<MainPage> {
                                 ? Color(0xffE44545)
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(
+                                color: Colors.black,
+                                width: selectedCategory.contains(category4)
+                                    ? 0
+                                    : 1),
                           ),
                           child: Center(
                             child: Text(
