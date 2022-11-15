@@ -33,7 +33,12 @@ class _MainPageState extends State<MainPage> {
     return getDay1;
   }
 
-  List<bool> _selections = List.generate(5, (index) => false);
+  late List<bool> isButton;
+  bool isButton0 = false;
+  bool isButton1 = false;
+  bool isButton2 = false;
+  bool isButton3 = false;
+  bool isButton4 = false;
 
   var week = {
     'Mon': '월',
@@ -60,6 +65,22 @@ class _MainPageState extends State<MainPage> {
     daysOfWeek = getWeek();
     daysOfWeekIndex = getWeek1();
     page = PageController(initialPage: daysOfWeekIndex);
+    switch (daysOfWeekIndex){
+      case 0:
+        isButton = [true, false, false, false, false];
+        break;
+      case 1:
+        isButton = [false, true, false, false, false];
+        break;
+      case 2:
+        isButton = [false, false, true, false, false];
+        break;
+      case 3:
+        isButton = [false, false, false, true, false];
+        break;
+      case 4:
+        isButton = [false, false, false, false, true];
+    }
   }
 
   @override
@@ -139,7 +160,7 @@ class _MainPageState extends State<MainPage> {
                       ToggleButtons(
                         children: [
                           OutlineCircleButton(
-                            radius: 30.0,
+                            radius: 35.0,
                             borderSize: 0.5,
                             child: const Center(
                               child: const Text('월'),
@@ -151,7 +172,7 @@ class _MainPageState extends State<MainPage> {
                             },
                           ),
                           OutlineCircleButton(
-                            radius: 30.0,
+                            radius: 35.0,
                             borderSize: 0.5,
                             child: const Center(
                               child: const Text('화'),
@@ -163,7 +184,7 @@ class _MainPageState extends State<MainPage> {
                             },
                           ),
                           OutlineCircleButton(
-                            radius: 30.0,
+                            radius: 35.0,
                             borderSize: 0.5,
                             child: const Center(
                               child: const Text('수'),
@@ -175,7 +196,7 @@ class _MainPageState extends State<MainPage> {
                             },
                           ),
                           OutlineCircleButton(
-                            radius: 30.0,
+                            radius: 35.0,
                             borderSize: 0.5,
                             child: const Center(
                               child: const Text('목'),
@@ -187,7 +208,7 @@ class _MainPageState extends State<MainPage> {
                             },
                           ),
                           OutlineCircleButton(
-                            radius: 30.0,
+                            radius: 35.0,
                             borderSize: 0.5,
                             child: const Center(
                               child: const Text('금'),
@@ -199,7 +220,21 @@ class _MainPageState extends State<MainPage> {
                             },
                           ),
                         ],
-                        isSelected: _selections,
+                        isSelected: isButton,
+                        selectedColor: Color(0xffE44545),
+                        focusColor: Color(0xffE44545),
+                        fillColor: Color(0xffE44545),
+                        onPressed: (int index){
+                          setState(() {
+                            for (int buttonIndex = 0; buttonIndex < isButton.length; buttonIndex++) {
+                              if (buttonIndex == index) {
+                                isButton[buttonIndex] = true;
+                              } else {
+                                isButton[buttonIndex] = false;
+                              }
+                            }
+                          });
+                        },
                         renderBorder: false,
                       ),
                     ],
