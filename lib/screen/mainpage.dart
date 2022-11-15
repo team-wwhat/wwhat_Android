@@ -99,7 +99,7 @@ class _MainPageState extends State<MainPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 11),
+                  padding: const EdgeInsets.only(left: 11, bottom: 10),
                   child: Row(
                     children: [
                       Container(
