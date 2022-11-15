@@ -133,71 +133,76 @@ class _MainPageState extends State<MainPage> {
                 Padding(
                   padding: const EdgeInsets.only(
                       top: 23.0, bottom: 16.0, right: 10.0),
-                  child: ToggleButtons(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      OutlineCircleButton(
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        child: const Center(
-                          child: const Text('월'),
-                        ),
-                        onTap: () {
-                          page.animateToPage(0,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      OutlineCircleButton(
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        child: const Center(
-                          child: const Text('화'),
-                        ),
-                        onTap: () {
-                          page.animateToPage(1,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      OutlineCircleButton(
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        child: const Center(
-                          child: const Text('수'),
-                        ),
-                        onTap: () {
-                          page.animateToPage(2,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      OutlineCircleButton(
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        child: const Center(
-                          child: const Text('목'),
-                        ),
-                        onTap: () {
-                          page.animateToPage(3,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
-                      ),
-                      OutlineCircleButton(
-                        radius: 30.0,
-                        borderSize: 0.5,
-                        child: const Center(
-                          child: const Text('금'),
-                        ),
-                        onTap: () {
-                          page.animateToPage(4,
-                              duration: const Duration(milliseconds: 250),
-                              curve: Curves.linearToEaseOut);
-                        },
+                      ToggleButtons(
+                        children: [
+                          OutlineCircleButton(
+                            radius: 30.0,
+                            borderSize: 0.5,
+                            child: const Center(
+                              child: const Text('월'),
+                            ),
+                            onTap: () {
+                              page.animateToPage(0,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            },
+                          ),
+                          OutlineCircleButton(
+                            radius: 30.0,
+                            borderSize: 0.5,
+                            child: const Center(
+                              child: const Text('화'),
+                            ),
+                            onTap: () {
+                              page.animateToPage(1,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            },
+                          ),
+                          OutlineCircleButton(
+                            radius: 30.0,
+                            borderSize: 0.5,
+                            child: const Center(
+                              child: const Text('수'),
+                            ),
+                            onTap: () {
+                              page.animateToPage(2,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            },
+                          ),
+                          OutlineCircleButton(
+                            radius: 30.0,
+                            borderSize: 0.5,
+                            child: const Center(
+                              child: const Text('목'),
+                            ),
+                            onTap: () {
+                              page.animateToPage(3,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            },
+                          ),
+                          OutlineCircleButton(
+                            radius: 30.0,
+                            borderSize: 0.5,
+                            child: const Center(
+                              child: const Text('금'),
+                            ),
+                            onTap: () {
+                              page.animateToPage(4,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.linearToEaseOut);
+                            },
+                          ),
+                        ],
+                        isSelected: _selections,
+                        renderBorder: false,
                       ),
                     ],
-                    isSelected: _selections,
-                    renderBorder: false,
                   ),
                 ),
                 ScrollConfiguration(
